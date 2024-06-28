@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission2</title>
+</head>
+<body>
+    <p class="content"></p>
+    请输入一个名字：<input type="text" class="text1"></input>
+    <button type="button" id="button1" class="generate">点击生成笑话</button>
+</body>
+<script>
+
+    var content = '这句话会展现出来';
+    
+
+       var joke = generateJoke();
+
+    btn = document.querySelector("#button1");
+    btn.addEventListener('click', clickButton);
+
+
+
+
+    function generateJoke() {
+
+        var targetUsers = ['蔡某坤','吴某洋','赵某龙','国服男枪','吴某凡'];
+        var places = ['男团选秀','米哈游公司','长坂坡','安首相演讲的','大学'];
+        var actions = ['开始姬你太美','大喊米哈游加强刻晴','开始七进七出','掏出了他的枪，崩了安首相','开始欺骗女学生'];
+
+        var targetUser = getElement(targetUsers);
+        var place = getElement(places);
+        var action = getElement(actions);
+        var sourceUser = document.querySelector(".text1").value || '吴斌杰';
+
+        var joke = `今天气温 ${ Math.random() * 30 } 摄氏度，${targetUser}出门散步。当走到${place}门前时，突然就${action}。人们都惊呆了，${sourceUser}全程目睹但并没有慌，因为${targetUser}他已经习以为常。`;
+        console.log(joke);
+        return joke;
+    }
+
+    function getElement(arr) {
+
+        var index = Math.floor(Math.random() * arr.length);
+        return arr[index];
+    }
+
+    function clickButton() {
+        var p = document.querySelector(".content");
+        console.log(p);
+        content = generateJoke();
+        p.innerHTML = content;
+    }
+</script>
+</html>
